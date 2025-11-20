@@ -20,6 +20,11 @@ sbfl <- Airport$new("inst/extdata/ad_sbfl.json")
 print.Airport(sbfl)   # print bonito do aeroporto
 print.superficies(sbfl)
 
+
+print_runway_diagram(sbfl, "14/32")
+print_runway_diagram(sbfl, "14/32", width_chars = 100)
+
+
 # -------------------------------
 # 3. GEOMETRIAS DAS PISTAS
 # -------------------------------
@@ -42,4 +47,3 @@ htmlwidgets::saveWidget(mapa,
                         title = "SBFL – Florianópolis – Hercílio Luz")
 
 browseURL("inst/docs/SBFL_Hercilio_Luz.html")
-

@@ -15,14 +15,10 @@ Depends:
     R (>= 4.0.0)
 Imports:
     R6 (>= 2.5.0),
-    dplyr (>= 1.1.0),
-    purrr (>= 1.2.0),
     geosphere (>= 1.5.0),
     jsonlite (>= 1.8.0),
     sf (>= 1.0.0),
     leaflet (>= 2.1.0),
-    RColorBrewer (>= 1.1.0),
-    htmlwidgets (>= 1.6.0),
     magrittr (>= 2.0.0)
 Suggests:
     devtools (>= 2.4.0),
@@ -34,3 +30,4 @@ Suggests:
     pkgdown (>= 2.0.0)
 RoxygenNote: 7.3.3
 VignetteBuilder: knitr
+Config/testthat/edition: 3
