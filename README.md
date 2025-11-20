@@ -1,4 +1,4 @@
-# AirportPro <img src="man/figures/logo.png" align="right" height="139" alt="" />
+# AirportPro 
 
 > Análise Profissional de Aeroportos e Pistas conforme RBAC-154 e ICA 11-408
 
