@@ -1,0 +1,82 @@
+{
+  "versao_estrutura": "1.0.3",
+  "referencia_norma": {
+    "norma_id": "RBAC-154",
+    "edicao": "2019-12-11"
+  },
+  "aeroporto": {
+    "icao": "SBFL",
+    "iata": "FLN",
+    "nome": "Florianópolis / Hercílio Luz",
+    "municipio": "Florianópolis",
+    "estado": "SC",
+    "geodesia": {
+      "latitude_arp": -27.670278,
+      "longitude_arp": -48.5525,
+      "elevacao_arp_m": 5.18,
+      "crs_planar": "EPSG:32722",
+      "geoid": "SIRGAS2000",
+      "datum_horizontal": "SIRGAS2000"
+    },
+    "pistas": [
+      {
+        "identificacao": "14/32",
+        "comprimento_m": 2400,
+        "largura_m": 45,
+        "tipo_pavimento": "ASFALTO",
+        "approach_type": "precision",
+        "codigo_referencia": {
+          "numero": 4,
+          "letra": "C"
+        },
+        "cabeceiras": [
+          {
+            "designador": "14",
+            "latitude_thr": -27.66583,
+            "longitude_thr": -48.55111,
+            "elevacao_thr_m": 0.54,
+            "rumo_verdadeiro_graus": 140.0,
+            "tecnologia_aproximacao": "ILS-CAT-I"
+          },
+          {
+            "designador": "32",
+            "latitude_thr": -27.67694,
+            "longitude_thr": -48.53028,
+            "elevacao_thr_m": 0.54,
+            "rumo_verdadeiro_graus": 320.0,
+            "tecnologia_aproximacao": "VOR/DME"
+          }
+        ]
+      },
+      {
+        "identificacao": "03/21",
+        "comprimento_m": 1320,
+        "largura_m": 45,
+        "tipo_pavimento": "CONCRETO",
+        "approach_type": "visual",
+        "codigo_referencia": {
+          "numero": 1,
+          "letra": "C"
+        },
+        "cabeceiras": [
+          {
+            "designador": "03",
+            "latitude_thr": -27.67528,
+            "longitude_thr": -48.55417,
+            "elevacao_thr_m": 0.57,
+            "rumo_verdadeiro_graus": 30.0,
+            "tecnologia_aproximacao": "VOR"
+          },
+          {
+            "designador": "21",
+            "latitude_thr": -27.66472,
+            "longitude_thr": -48.55167,
+            "elevacao_thr_m": 0.54,
+            "rumo_verdadeiro_graus": 210.0,
+            "tecnologia_aproximacao": "VISUAL"
+          }
+        ]
+      }
+    ]
+  }
+}

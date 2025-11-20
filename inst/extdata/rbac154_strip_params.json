@@ -1,0 +1,208 @@
+{
+  "$schema": "https://airportpro.dev/schemas/rbac154-strip-2.0.0.json",
+  "metadata": {
+    "norma_id": "RBAC-154",
+    "titulo": "Parâmetros de Faixa de Pista",
+    "edicao": "2019-12-11",
+    "secao": "154.207",
+    "fonte_oficial": "ANAC RBAC-154",
+    "versao_dados": "2.0.0",
+    "ultima_atualizacao": "2025-11-08",
+    "descricao": "Parâmetros completos para faixas de pista conforme RBAC-154 §154.207",
+    "alteracoes": [
+      {
+        "versao": "2.0.0",
+        "data": "2025-11-08",
+        "mudancas": [
+          "Adicionada seção completa 154.207 (não apenas c)",
+          "Corrigida interpretação: lateral_width_m é DO EIXO da pista",
+          "Adicionados metadados normativos completos",
+          "Incluídas observações de implementação"
+        ]
+      }
+    ]
+  },
+  "definicoes": {
+    "code_number": "Código numérico de referência da aeronave (1-4) conforme ICAO",
+    "approach_type": "Tipo geral de aproximação da pista inteira",
+    "lateral_width_m": "Distância lateral DO EIXO da pista em metros (cada lado)",
+    "longitudinal_ext_m": "Extensão longitudinal antes/depois da cabeceira em metros",
+    "largura_total_m": "Largura total da faixa (2 × lateral_width_m)",
+    "observacao_rbac": "Referência específica na norma RBAC-154"
+  },
+  "base_normativa": {
+    "artigo_principal": "RBAC-154 §154.207",
+    "subartigos": {
+      "comprimento": "154.207(b) - Comprimento de faixas",
+      "largura": "154.207(c) - Largura de faixas",
+      "objetos": "154.207(d) - Objetos em faixas"
+    },
+    "principio_medicao": "Medidas laterais tomadas DO EIXO da pista, conforme §154.207(c)",
+    "resolucoes_atualizacao": [
+      "Resolução nº 628/2021 - Alteração item (b)(1)",
+      "Resolução nº 465/2018 - Alteração itens (c)(1)(ii) e (c)(2)(ii)"
+    ]
+  },
+  "parametros": [
+    {
+      "code_number": 1,
+      "approach_type": "visual",
+      "lateral_width_m": 30,
+      "longitudinal_ext_m": 30,
+      "largura_total_m": 60,
+      "observacao_rbac": "§154.207(b)(1)(iii) + §154.207(c)(3)(iii)"
+    },
+    {
+      "code_number": 1,
+      "approach_type": "non-precision",
+      "lateral_width_m": 70,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 140,
+      "observacao_rbac": "§154.207(b)(1)(ii) + §154.207(c)(2)(ii)"
+    },
+    {
+      "code_number": 1,
+      "approach_type": "precision",
+      "lateral_width_m": 70,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 140,
+      "observacao_rbac": "§154.207(b)(1)(ii) + §154.207(c)(1)(ii)"
+    },
+    {
+      "code_number": 2,
+      "approach_type": "visual",
+      "lateral_width_m": 40,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 80,
+      "observacao_rbac": "§154.207(b)(1)(i) + §154.207(c)(3)(ii)"
+    },
+    {
+      "code_number": 2,
+      "approach_type": "non-precision",
+      "lateral_width_m": 70,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 140,
+      "observacao_rbac": "§154.207(b)(1)(i) + §154.207(c)(2)(ii)"
+    },
+    {
+      "code_number": 2,
+      "approach_type": "precision",
+      "lateral_width_m": 70,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 140,
+      "observacao_rbac": "§154.207(b)(1)(i) + §154.207(c)(1)(ii)"
+    },
+    {
+      "code_number": 3,
+      "approach_type": "visual",
+      "lateral_width_m": 75,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 150,
+      "observacao_rbac": "§154.207(b)(1)(i) + §154.207(c)(3)(i)"
+    },
+    {
+      "code_number": 3,
+      "approach_type": "non-precision",
+      "lateral_width_m": 140,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 280,
+      "observacao_rbac": "§154.207(b)(1)(i) + §154.207(c)(2)(i)"
+    },
+    {
+      "code_number": 3,
+      "approach_type": "precision",
+      "lateral_width_m": 140,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 280,
+      "observacao_rbac": "§154.207(b)(1)(i) + §154.207(c)(1)(i)"
+    },
+    {
+      "code_number": 4,
+      "approach_type": "visual",
+      "lateral_width_m": 75,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 150,
+      "observacao_rbac": "§154.207(b)(1)(i) + §154.207(c)(3)(i)"
+    },
+    {
+      "code_number": 4,
+      "approach_type": "non-precision",
+      "lateral_width_m": 140,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 280,
+      "observacao_rbac": "§154.207(b)(1)(i) + §154.207(c)(2)(i)"
+    },
+    {
+      "code_number": 4,
+      "approach_type": "precision",
+      "lateral_width_m": 140,
+      "longitudinal_ext_m": 60,
+      "largura_total_m": 280,
+      "observacao_rbac": "§154.207(b)(1)(i) + §154.207(c)(1)(i)"
+    }
+  ],
+  "tecnologias_exemplo": {
+    "precision": {
+      "definicao": "Aproximação de precisão com orientação lateral e vertical",
+      "exemplos": ["ILS-CAT-I", "ILS-CAT-II", "ILS-CAT-III", "PAR", "MLS", "GLS", "GBAS", "SBAS"]
+    },
+    "non-precision": {
+      "definicao": "Aproximação por instrumentos com orientação lateral apenas",
+      "exemplos": ["VOR", "VOR/DME", "NDB", "TACAN", "RNAV", "RNP", "LOC", "GPS"]
+    },
+    "visual": {
+      "definicao": "Aproximação visual sem auxílios eletrônicos de precisão",
+      "exemplos": ["VISUAL", "CIRCLING", "CONTACT"]
+    }
+  },
+  "exemplos_calculo": {
+    "sncw_alcantara": {
+      "aeroporto": "SNCW - Centro de Lançamento de Alcântara",
+      "pista": "09/27",
+      "codigo": "3C",
+      "tipo_aproximacao": "non-precision",
+      "comprimento_pista_m": 2600,
+      "largura_pista_m": 45,
+      "calculo_faixa": {
+        "lateral_width_m": 140,
+        "longitudinal_ext_m": 60,
+        "largura_total_m": 280,
+        "comprimento_total_m": 2720,
+        "area_m2": 761600,
+        "formula_largura": "2 × 140m = 280m (±140m do eixo)",
+        "formula_comprimento": "2600m + 2 × 60m = 2720m"
+      }
+    },
+    "sbpa_porto_alegre": {
+      "aeroporto": "SBPA - Aeroporto Internacional Salgado Filho",
+      "pista": "11/29",
+      "codigo": "4D",
+      "tipo_aproximacao": "precision",
+      "comprimento_pista_m": 3200,
+      "largura_pista_m": 45,
+      "calculo_faixa": {
+        "lateral_width_m": 140,
+        "longitudinal_ext_m": 60,
+        "largura_total_m": 280,
+        "comprimento_total_m": 3320,
+        "area_m2": 929600,
+        "formula_largura": "2 × 140m = 280m (±140m do eixo)",
+        "formula_comprimento": "3200m + 2 × 60m = 3320m"
+      }
+    }
+  },
+  "observacoes_implementacao": {
+    "medicao_referencia": "TODAS as medidas laterais são tomadas DO EIXO DA PISTA, não da borda",
+    "elevacao_faixa": "Faixa deve estar na elevação máxima das cabeceiras",
+    "zona_parada": "Se existir stopway, extensão longitudinal medida do fim da stopway",
+    "objetos_proibidos": "Conforme §154.207(d) - nenhum objeto que coloque aeronaves em risco",
+    "validacao_geometrica": "Largura total = 2 × lateral_width_m",
+    "compatibilidade_anterior": "Mantém compatibilidade com versão 1.0.1 nos campos essenciais"
+  },
+  "compatibilidade": {
+    "versao_anterior": "1.0.1",
+    "campos_mantidos": ["code_number", "approach_type", "lateral_width_m", "longitudinal_ext_m"],
+    "campos_adicionados": ["largura_total_m", "observacao_rbac"],
+    "mudancas_interpretacao": "Esclarecida interpretação correta do lateral_width_m como distância DO EIXO"
+  }
+}

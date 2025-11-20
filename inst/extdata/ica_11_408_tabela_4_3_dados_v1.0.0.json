@@ -1,0 +1,759 @@
+{
+  "metadata": {
+    "norma_id": "ICA-11-408",
+    "titulo": "Dimensões das Superfícies Limitadoras de Obstáculos – PBZPA/PEZPA",
+    "edicao": "2020",
+    "secao": "TABELA 4-3",
+    "fonte_oficial": "DECEA - Comando da Aeronáutica",
+    "versao_dados": "1.0.0",
+    "ultima_atualizacao": "2025-11-09",
+    "compatibilidade_airport": "1.0.3",
+    "descricao": "Lookup table compatível com Airport schema usando approach_type + cat_precision para lookup preciso"
+  },
+
+  "parametros": [
+    {
+      "code_number": 1,
+      "approach_type": "visual",
+      "cat_precision": null,
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 60,
+        "distancia_cabeceira_m": 30,
+        "abertura_total_pct": 10,
+        "comprimento_m": 1600,
+        "gradiente_pct": 5,
+        "segunda_secao": null,
+        "secao_horizontal": null,
+        "observacao_ica": "VISUAL - Código 1"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 60,
+        "distancia_cabeceira_oposta_m": 30,
+        "abertura_total_pct": 10,
+        "largura_final_m": 380,
+        "comprimento_m": 1600,
+        "gradiente_pct": 5,
+        "observacao_ica": "Código 1"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 20,
+        "observacao_ica": "Todos os tipos - Código 1"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 2000,
+        "observacao_ica": "Todos os tipos - Código 1"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 35,
+        "observacao_ica": "Todos os tipos - Código 1"
+      },
+      "superficie_horizontal_externa": null,
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 2,
+      "approach_type": "visual",
+      "cat_precision": null,
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 80,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 10,
+        "comprimento_m": 2500,
+        "gradiente_pct": 4,
+        "segunda_secao": null,
+        "secao_horizontal": null,
+        "observacao_ica": "VISUAL - Código 2"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 80,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 10,
+        "largura_final_m": 580,
+        "comprimento_m": 2500,
+        "gradiente_pct": 4,
+        "observacao_ica": "Código 2"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 20,
+        "observacao_ica": "Todos os tipos - Código 2"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 2500,
+        "observacao_ica": "Todos os tipos - Código 2"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 55,
+        "observacao_ica": "Todos os tipos - Código 2"
+      },
+      "superficie_horizontal_externa": null,
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 3,
+      "approach_type": "visual",
+      "cat_precision": null,
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 150,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 10,
+        "comprimento_m": 3000,
+        "gradiente_pct": 3.33,
+        "segunda_secao": null,
+        "secao_horizontal": null,
+        "observacao_ica": "VISUAL - Código 3"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 180,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 12.5,
+        "largura_final_m": 1200,
+        "comprimento_m": 15000,
+        "gradiente_pct": 2,
+        "observacao_ica": "Código 3"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "Todos os tipos - Código 3"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 4000,
+        "observacao_ica": "Todos os tipos - Código 3"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 75,
+        "observacao_ica": "Todos os tipos - Código 3"
+      },
+      "superficie_horizontal_externa": null,
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 4,
+      "approach_type": "visual",
+      "cat_precision": null,
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 150,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 10,
+        "comprimento_m": 3000,
+        "gradiente_pct": 2.5,
+        "segunda_secao": null,
+        "secao_horizontal": null,
+        "observacao_ica": "VISUAL - Código 4"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 180,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 12.5,
+        "largura_final_m": 1200,
+        "comprimento_m": 15000,
+        "gradiente_pct": 2,
+        "observacao_ica": "Código 4"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "Todos os tipos - Código 4"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 4000,
+        "observacao_ica": "Todos os tipos - Código 4"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 100,
+        "observacao_ica": "Todos os tipos - Código 4"
+      },
+      "superficie_horizontal_externa": null,
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 1,
+      "approach_type": "non-precision",
+      "cat_precision": null,
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 140,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 2500,
+        "gradiente_pct": 3.33,
+        "segunda_secao": null,
+        "secao_horizontal": null,
+        "observacao_ica": "IFR NÃO PRECISÃO - Código 1"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 60,
+        "distancia_cabeceira_oposta_m": 30,
+        "abertura_total_pct": 10,
+        "largura_final_m": 380,
+        "comprimento_m": 1600,
+        "gradiente_pct": 5,
+        "observacao_ica": "Código 1"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 20,
+        "observacao_ica": "Todos os tipos - Código 1"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 3500,
+        "observacao_ica": "IFR - Código 1"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 60,
+        "observacao_ica": "IFR - Código 1"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 105,
+        "raio_m": 20000,
+        "observacao_ica": "IFR - Código 1"
+      },
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 2,
+      "approach_type": "non-precision",
+      "cat_precision": null,
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 140,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 2500,
+        "gradiente_pct": 3.33,
+        "segunda_secao": null,
+        "secao_horizontal": null,
+        "observacao_ica": "IFR NÃO PRECISÃO - Código 2"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 80,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 10,
+        "largura_final_m": 580,
+        "comprimento_m": 2500,
+        "gradiente_pct": 4,
+        "observacao_ica": "Código 2"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 20,
+        "observacao_ica": "Todos os tipos - Código 2"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 3500,
+        "observacao_ica": "IFR - Código 2"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 60,
+        "observacao_ica": "IFR - Código 2"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 105,
+        "raio_m": 20000,
+        "observacao_ica": "IFR - Código 2"
+      },
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 3,
+      "approach_type": "non-precision",
+      "cat_precision": null,
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 280,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 3000,
+        "gradiente_pct": 2,
+        "segunda_secao": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 3600,
+          "gradiente_pct": 2.5
+        },
+        "secao_horizontal": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 8400,
+          "desnivel_m": "A_det"
+        },
+        "observacao_ica": "IFR NÃO PRECISÃO - Código 3"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 180,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 12.5,
+        "largura_final_m": 1200,
+        "comprimento_m": 15000,
+        "gradiente_pct": 2,
+        "observacao_ica": "Código 3"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "Todos os tipos - Código 3"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 4000,
+        "observacao_ica": "IFR - Código 3"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 75,
+        "observacao_ica": "IFR - Código 3"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 120,
+        "raio_m": 20000,
+        "observacao_ica": "IFR NÃO PRECISÃO - Código 3"
+      },
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 4,
+      "approach_type": "non-precision",
+      "cat_precision": null,
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 280,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 3000,
+        "gradiente_pct": 2,
+        "segunda_secao": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 3600,
+          "gradiente_pct": 2.5
+        },
+        "secao_horizontal": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 8400,
+          "desnivel_m": "A_det"
+        },
+        "observacao_ica": "IFR NÃO PRECISÃO - Código 4"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 180,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 12.5,
+        "largura_final_m": 1200,
+        "comprimento_m": 15000,
+        "gradiente_pct": 2,
+        "observacao_ica": "Código 4"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "Todos os tipos - Código 4"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 4000,
+        "observacao_ica": "IFR - Código 4"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 100,
+        "observacao_ica": "IFR - Código 4"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 145,
+        "raio_m": 20000,
+        "observacao_ica": "IFR NÃO PRECISÃO - Código 4"
+      },
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 1,
+      "approach_type": "precision",
+      "cat_precision": "CAT_I",
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 140,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 3000,
+        "gradiente_pct": 2.5,
+        "segunda_secao": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 12000,
+          "gradiente_pct": 3
+        },
+        "secao_horizontal": null,
+        "observacao_ica": "IFR PRECISÃO CAT I - Código 1"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 60,
+        "distancia_cabeceira_oposta_m": 30,
+        "abertura_total_pct": 10,
+        "largura_final_m": 380,
+        "comprimento_m": 1600,
+        "gradiente_pct": 5,
+        "observacao_ica": "Código 1"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "IFR - Código 1"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 3500,
+        "observacao_ica": "IFR - Código 1"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 60,
+        "observacao_ica": "IFR - Código 1"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 105,
+        "raio_m": 20000,
+        "observacao_ica": "IFR PRECISÃO - Código 1"
+      },
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 2,
+      "approach_type": "precision",
+      "cat_precision": "CAT_I",
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 140,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 3000,
+        "gradiente_pct": 2.5,
+        "segunda_secao": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 12000,
+          "gradiente_pct": 3
+        },
+        "secao_horizontal": null,
+        "observacao_ica": "IFR PRECISÃO CAT I - Código 2"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 80,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 10,
+        "largura_final_m": 580,
+        "comprimento_m": 2500,
+        "gradiente_pct": 4,
+        "observacao_ica": "Código 2"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "IFR - Código 2"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 3500,
+        "observacao_ica": "IFR - Código 2"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 60,
+        "observacao_ica": "IFR - Código 2"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 105,
+        "raio_m": 20000,
+        "observacao_ica": "IFR PRECISÃO - Código 2"
+      },
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 3,
+      "approach_type": "precision",
+      "cat_precision": "CAT_I",
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 280,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 3000,
+        "gradiente_pct": 2,
+        "segunda_secao": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 3600,
+          "gradiente_pct": 2.5
+        },
+        "secao_horizontal": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 8400,
+          "desnivel_m": "A_det"
+        },
+        "observacao_ica": "IFR PRECISÃO CAT I - Código 3"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 180,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 12.5,
+        "largura_final_m": 1200,
+        "comprimento_m": 15000,
+        "gradiente_pct": 2,
+        "observacao_ica": "Código 3"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "IFR - Código 3"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 4000,
+        "observacao_ica": "IFR - Código 3"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 100,
+        "observacao_ica": "IFR - Código 3"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 145,
+        "raio_m": 20000,
+        "observacao_ica": "IFR PRECISÃO - Código 3"
+      },
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 4,
+      "approach_type": "precision",
+      "cat_precision": "CAT_I",
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 280,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 3000,
+        "gradiente_pct": 2,
+        "segunda_secao": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 3600,
+          "gradiente_pct": 2.5
+        },
+        "secao_horizontal": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 8400,
+          "desnivel_m": "A_det"
+        },
+        "observacao_ica": "IFR PRECISÃO CAT I - Código 4"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 180,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 12.5,
+        "largura_final_m": 1200,
+        "comprimento_m": 15000,
+        "gradiente_pct": 2,
+        "observacao_ica": "Código 4"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "IFR - Código 4"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 4000,
+        "observacao_ica": "IFR - Código 4"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 100,
+        "observacao_ica": "IFR - Código 4"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 145,
+        "raio_m": 20000,
+        "observacao_ica": "IFR PRECISÃO - Código 4"
+      },
+      "superficie_aproximacao_interna": null,
+      "superficie_transicao_interna": null,
+      "superficie_pouso_interrompido": null
+    },
+
+    {
+      "code_number": 3,
+      "approach_type": "precision",
+      "cat_precision": "CAT_II_III",
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 280,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 3000,
+        "gradiente_pct": 2,
+        "segunda_secao": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 3600,
+          "gradiente_pct": 2.5
+        },
+        "secao_horizontal": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 8400,
+          "desnivel_m": "A_det"
+        },
+        "observacao_ica": "IFR PRECISÃO CAT II E III - Código 3"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 180,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 12.5,
+        "largura_final_m": 1200,
+        "comprimento_m": 15000,
+        "gradiente_pct": 2,
+        "observacao_ica": "Código 3"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "IFR - Código 3"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 4000,
+        "observacao_ica": "IFR - Código 3"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 100,
+        "observacao_ica": "IFR - Código 3"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 145,
+        "raio_m": 20000,
+        "observacao_ica": "IFR PRECISÃO CAT II/III - Código 3"
+      },
+      "superficie_aproximacao_interna": {
+        "largura_borda_interna_m": 90,
+        "distancia_cabeceira_m": 60,
+        "abertura_cada_lado_pct": "Paralela",
+        "comprimento_m": 900,
+        "gradiente_pct": 2,
+        "observacao_ica": "Apenas para CAT II/III - Código 3"
+      },
+      "superficie_transicao_interna": {
+        "gradiente_pct": 33.3,
+        "observacao_ica": "Apenas para CAT II/III - Código 3"
+      },
+      "superficie_pouso_interrompido": {
+        "largura_borda_interna_m": 90,
+        "distancia_cabeceira_m": "1800",
+        "abertura_cada_lado_pct": 10,
+        "gradiente_pct": 3.33,
+        "observacao_ica": "Apenas para CAT II/III - Código 3"
+      }
+    },
+
+    {
+      "code_number": 4,
+      "approach_type": "precision",
+      "cat_precision": "CAT_II_III",
+      "superficie_aproximacao": {
+        "largura_borda_interna_m": 280,
+        "distancia_cabeceira_m": 60,
+        "abertura_total_pct": 15,
+        "comprimento_m": 3000,
+        "gradiente_pct": 2,
+        "segunda_secao": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 3600,
+          "gradiente_pct": 2.5
+        },
+        "secao_horizontal": {
+          "abertura_total_pct": 15,
+          "comprimento_m": 8400,
+          "desnivel_m": "A_det"
+        },
+        "observacao_ica": "IFR PRECISÃO CAT II E III - Código 4"
+      },
+      "superficie_decolagem": {
+        "largura_borda_interna_m": 180,
+        "distancia_cabeceira_oposta_m": 60,
+        "abertura_total_pct": 12.5,
+        "largura_final_m": 1200,
+        "comprimento_m": 15000,
+        "gradiente_pct": 2,
+        "observacao_ica": "Código 4"
+      },
+      "superficie_transicao": {
+        "gradiente_pct": 14.3,
+        "observacao_ica": "IFR - Código 4"
+      },
+      "superficie_horizontal_interna": {
+        "altura_m": 45,
+        "raio_m": 4000,
+        "observacao_ica": "IFR - Código 4"
+      },
+      "superficie_conica": {
+        "gradiente_pct": 5,
+        "altura_m": 100,
+        "observacao_ica": "IFR - Código 4"
+      },
+      "superficie_horizontal_externa": {
+        "altura_m": 145,
+        "raio_m": 20000,
+        "observacao_ica": "IFR PRECISÃO CAT II/III - Código 4"
+      },
+      "superficie_aproximacao_interna": {
+        "largura_borda_interna_m": 120,
+        "distancia_cabeceira_m": 60,
+        "abertura_cada_lado_pct": "Paralela",
+        "comprimento_m": 900,
+        "gradiente_pct": 2,
+        "observacao_ica": "Apenas para CAT II/III - Código 4"
+      },
+      "superficie_transicao_interna": {
+        "gradiente_pct": 33.3,
+        "observacao_ica": "Apenas para CAT II/III - Código 4"
+      },
+      "superficie_pouso_interrompido": {
+        "largura_borda_interna_m": 120,
+        "distancia_cabeceira_m": "1800",
+        "abertura_cada_lado_pct": 10,
+        "gradiente_pct": 3.33,
+        "observacao_ica": "Apenas para CAT II/III - Código 4"
+      }
+    }
+  ],
+
+  "notas_implementacao": {
+    "compatibilidade": "100% compatível com Airport schema v1.0.3",
+    "lookup_method": "Busca por code_number + approach_type + cat_precision derivada de tecnologia_aproximacao",
+    "cat_precision_mapping": {
+      "visual": "Sempre null",
+      "non-precision": "Sempre null",
+      "precision": "CAT_I ou CAT_II_III baseado em tecnologia_aproximacao"
+    },
+    "tecnologia_aproximacao_examples": {
+      "CAT_I": ["ILS-CAT-I", "ILS", "LPV", "LNAV/VNAV", "GLS"],
+      "CAT_II_III": ["ILS-CAT-II", "ILS-CAT-III", "ILS-CAT-IIIA", "ILS-CAT-IIIB", "ILS-CAT-IIIC"]
+    }
+  }
+}

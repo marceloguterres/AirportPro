@@ -1,0 +1,53 @@
+{
+  "versao_estrutura": "1.0.3",
+  "referencia_norma": {
+    "norma_id": "RBAC-154",
+    "edicao": "2019-12-11"
+  },
+  "aeroporto": {
+    "icao": "SBPA",
+    "iata": "POA",
+    "nome": "Aeroporto Internacional de Porto Alegre - Salgado Filho",
+    "municipio": "Porto Alegre",
+    "estado": "RS",
+    "geodesia": {
+      "latitude_arp": -29.995833,
+      "longitude_arp": -51.171111,
+      "elevacao_arp_m": 3.4,
+      "crs_planar": "EPSG:32722",
+      "geoid": "SIRGAS2000",
+      "datum_horizontal": "SIRGAS2000"
+    },
+    "pistas": [
+      {
+        "identificacao": "11/29",
+        "comprimento_m": 3200,
+        "largura_m": 45,
+        "tipo_pavimento": "ASFALTO",
+        "approach_type": "precision",
+        "codigo_referencia": {
+          "numero": 4,
+          "letra": "D"
+        },
+        "cabeceiras": [
+          {
+            "designador": "11",
+            "latitude_thr": -29.99444,
+            "longitude_thr": -51.18306,
+            "elevacao_thr_m": 3.4,
+            "rumo_verdadeiro_graus": 109.5,
+            "tecnologia_aproximacao": "ILS-CAT-II"
+          },
+          {
+            "designador": "29",
+            "latitude_thr": -29.99500,
+            "longitude_thr": -51.15000,
+            "elevacao_thr_m": 9.0,
+            "rumo_verdadeiro_graus": 289.5,
+            "tecnologia_aproximacao": "VOR/DME"
+          }
+        ]
+      }
+    ]
+  }
+}

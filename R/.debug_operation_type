@@ -1,0 +1,28 @@
+# Função de teste/debug para verificar detecção
+#' @keywords internal
+.debug_operation_type <- function(pista_data) {
+
+  tipos_aproximacao <- pista_data$cabeceiras %>%
+    purrr::map_chr(~ .x$tipo_aproximacao %||% "VISUAL") %>%
+    stringr::str_to_upper()
+
+  cat("Tipos de aproximação encontrados:\n")
+  for (i in seq_along(tipos_aproximacao)) {
+    cat("  ", i, ":", tipos_aproximacao[i], "\n")
+  }
+
+  # Testar padrões
+  precision_match <- any(stringr::str_detect(tipos_aproximacao, "PA_CAT|ILS|PAR|MLS|GLS|CAT_"))
+  non_precision_match <- any(stringr::str_detect(tipos_aproximacao, "NPA|VOR|NDB|TACAN|RNAV|RNP|LOC|DME"))
+  visual_match <- any(stringr::str_detect(tipos_aproximacao, "VISUAL|VIS"))
+
+  cat("\nDetecções:\n")
+  cat("  Precision    :", precision_match, "\n")
+  cat("  Non-precision:", non_precision_match, "\n")
+  cat("  Visual       :", visual_match, "\n")
+
+  result <- .determine_operation_type_auto(pista_data)
+  cat("  Resultado    :", result, "\n")
+
+  return(result)
+}

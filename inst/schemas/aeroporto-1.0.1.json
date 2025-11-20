@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://airportpro.dev/schemas/aeroporto-minimal-1.0.3.json",
+  "title": "Schema com approach_type no nível da pista - v1.0.3",
+  "description": "Schema com tipo de aproximação no nível da pista inteira",
+  "type": "object",
+  "required": ["versao_estrutura", "aeroporto"],
+  "properties": {
+    "versao_estrutura": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "aeroporto": {
+      "type": "object",
+      "required": ["icao", "nome", "municipio", "estado", "geodesia", "pistas"],
+      "properties": {
+        "icao": {"type": "string", "pattern": "^[A-Z]{4}$"},
+        "iata": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
+        "nome": {"type": "string", "minLength": 1},
+        "municipio": {"type": "string", "minLength": 1},
+        "estado": {"type": "string", "pattern": "^[A-Z]{2}$"},
+        "geodesia": {
+          "type": "object",
+          "required": ["latitude_arp", "longitude_arp", "elevacao_arp_m", "crs_planar", "geoid"],
+          "properties": {
+            "latitude_arp": {"type": "number", "minimum": -90, "maximum": 90},
+            "longitude_arp": {"type": "number", "minimum": -180, "maximum": 180},
+            "elevacao_arp_m": {"type": "number"},
+            "geoid": {"type": "string", "enum": ["EGM2008", "EGM96", "SIRGAS2000"]},
+            "crs_planar": {"type": "string", "pattern": "^EPSG:\\d+$"},
+            "datum_horizontal": {"type": "string", "enum": ["WGS84", "SIRGAS2000", "SAD69"], "default": "WGS84"}
+          }
+        },
+        "pistas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["identificacao", "comprimento_m", "largura_m", "tipo_pavimento", "codigo_referencia", "approach_type", "cabeceiras"],
+            "properties": {
+              "identificacao": {"type": "string", "pattern": "^[0-3][0-9][LRC]?/[0-3][0-9][LRC]?$"},
+              "comprimento_m": {"type": "number", "minimum": 1},
+              "largura_m": {"type": "number", "minimum": 1},
+              "tipo_pavimento": {"type": "string", "enum": ["ASFALTO", "CONCRETO", "GRAMA", "TERRA", "CASCALHO"]},
+              "approach_type": {
+                "type": "string",
+                "enum": ["precision", "non-precision", "visual"],
+                "description": "Tipo geral de aproximação da pista inteira"
+              },
+              "codigo_referencia": {
+                "type": "object",
+                "required": ["numero", "letra"],
+                "properties": {
+                  "numero": {"type": "integer", "minimum": 1, "maximum": 4},
+                  "letra": {"type": "string", "pattern": "^[A-F]$"}
+                }
+              },
+              "cabeceiras": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "object",
+                  "required": ["designador", "latitude_thr", "longitude_thr", "elevacao_thr_m", "rumo_verdadeiro_graus"],
+                  "properties": {
+                    "designador": {"type": "string", "pattern": "^[0-3][0-9][LRC]?$"},
+                    "latitude_thr": {"type": "number", "minimum": -90, "maximum": 90},
+                    "longitude_thr": {"type": "number", "minimum": -180, "maximum": 180},
+                    "elevacao_thr_m": {"type": "number"},
+                    "rumo_verdadeiro_graus": {"type": "number", "minimum": 0, "maximum": 359.999},
+                    "tecnologia_aproximacao": {
+                      "type": ["string", "null"],
+                      "description": "Tecnologia específica desta cabeceira (ex: ILS-CAT-II, VOR/DME)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

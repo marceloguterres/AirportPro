@@ -1,0 +1,292 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://airportpro.dev/schemas/ica_11_408_tabela_4_3_v1.0.0.json",
+  "title": "ICA 11-408 TABELA 4-3 - Superfícies Limitadoras de Obstáculos",
+  "description": "Parâmetros de superfícies conforme TABELA 4-3 do ICA 11-408 com compatibilidade total Airport v1.0.3",
+  "type": "object",
+  "required": ["metadata", "parametros"],
+
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["norma_id", "titulo", "edicao", "secao", "versao_dados", "ultima_atualizacao"],
+      "properties": {
+        "norma_id": {
+          "type": "string",
+          "const": "ICA-11-408"
+        },
+        "titulo": {
+          "type": "string",
+          "const": "Dimensões das Superfícies Limitadoras de Obstáculos – PBZPA/PEZPA"
+        },
+        "edicao": {
+          "type": "string",
+          "const": "2020"
+        },
+        "secao": {
+          "type": "string",
+          "const": "TABELA 4-3"
+        },
+        "fonte_oficial": {
+          "type": "string",
+          "const": "DECEA - Comando da Aeronáutica"
+        },
+        "versao_dados": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "ultima_atualizacao": {
+          "type": "string",
+          "format": "date"
+        },
+        "compatibilidade_airport": {
+          "type": "string",
+          "const": "1.0.3"
+        },
+        "descricao": {
+          "type": "string",
+          "const": "Lookup table compatível com Airport schema usando approach_type + cat_precision para lookup preciso"
+        }
+      }
+    },
+
+    "parametros": {
+      "type": "array",
+      "description": "Parâmetros por código + approach_type + categoria de precisão",
+      "items": {
+        "type": "object",
+        "required": ["code_number", "approach_type", "cat_precision", "superficie_aproximacao", "superficie_decolagem", "superficie_transicao", "superficie_horizontal_interna", "superficie_conica"],
+        "properties": {
+          "code_number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4,
+            "description": "Código de referência (compatível com Airport.codigo_referencia.numero)"
+          },
+          "approach_type": {
+            "type": "string",
+            "enum": ["visual", "non-precision", "precision"],
+            "description": "EXATAMENTE igual ao Airport schema"
+          },
+          "cat_precision": {
+            "oneOf": [
+              {"type": "null"},
+              {"type": "string", "enum": ["CAT_I", "CAT_II_III"]}
+            ],
+            "description": "null para visual/non-precision; CAT_I ou CAT_II_III para precision"
+          },
+
+          "superficie_aproximacao": {
+            "type": "object",
+            "required": ["largura_borda_interna_m", "distancia_cabeceira_m", "abertura_total_pct", "comprimento_m", "gradiente_pct"],
+            "properties": {
+              "largura_borda_interna_m": {
+                "type": "integer",
+                "description": "Largura inicial da superfície (metros)"
+              },
+              "distancia_cabeceira_m": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Distância da cabeceira (metros)"
+              },
+              "abertura_total_pct": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Abertura total percentual (não por lado)"
+              },
+              "comprimento_m": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Comprimento da primeira seção"
+              },
+              "gradiente_pct": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Gradiente de subida percentual da primeira seção"
+              },
+              "segunda_secao": {
+                "oneOf": [
+                  {"type": "null"},
+                  {
+                    "type": "object",
+                    "required": ["abertura_total_pct", "comprimento_m", "gradiente_pct"],
+                    "properties": {
+                      "abertura_total_pct": {"type": "number"},
+                      "comprimento_m": {"type": "integer"},
+                      "gradiente_pct": {"type": "number"}
+                    }
+                  }
+                ],
+                "description": "null para códigos 1-2; objeto para códigos 3-4"
+              },
+              "secao_horizontal": {
+                "oneOf": [
+                  {"type": "null"},
+                  {
+                    "type": "object",
+                    "required": ["abertura_total_pct", "comprimento_m", "desnivel_m"],
+                    "properties": {
+                      "abertura_total_pct": {"type": "number"},
+                      "comprimento_m": {"type": "integer"},
+                      "desnivel_m": {"type": "string", "enum": ["A_det"]}
+                    }
+                  }
+                ],
+                "description": "Apenas para códigos 3-4 precision"
+              },
+              "observacao_ica": {
+                "type": "string",
+                "description": "Referência específica na norma ICA 11-408"
+              }
+            }
+          },
+
+          "superficie_decolagem": {
+            "type": "object",
+            "required": ["largura_borda_interna_m", "distancia_cabeceira_oposta_m", "abertura_total_pct", "largura_final_m", "comprimento_m", "gradiente_pct"],
+            "properties": {
+              "largura_borda_interna_m": {"type": "integer"},
+              "distancia_cabeceira_oposta_m": {"type": "integer"},
+              "abertura_total_pct": {"type": "number"},
+              "largura_final_m": {"type": "integer"},
+              "comprimento_m": {"type": "integer"},
+              "gradiente_pct": {"type": "number"},
+              "observacao_ica": {"type": "string"}
+            }
+          },
+
+          "superficie_transicao": {
+            "type": "object",
+            "required": ["gradiente_pct"],
+            "properties": {
+              "gradiente_pct": {"type": "number"},
+              "observacao_ica": {"type": "string"}
+            }
+          },
+
+          "superficie_horizontal_interna": {
+            "type": "object",
+            "required": ["altura_m", "raio_m"],
+            "properties": {
+              "altura_m": {"type": "integer"},
+              "raio_m": {"type": "integer"},
+              "observacao_ica": {"type": "string"}
+            }
+          },
+
+          "superficie_conica": {
+            "type": "object",
+            "required": ["gradiente_pct", "altura_m"],
+            "properties": {
+              "gradiente_pct": {"type": "number"},
+              "altura_m": {"type": "integer"},
+              "observacao_ica": {"type": "string"}
+            }
+          },
+
+          "superficie_horizontal_externa": {
+            "oneOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "required": ["altura_m", "raio_m"],
+                "properties": {
+                  "altura_m": {"type": "integer"},
+                  "raio_m": {"type": "integer"},
+                  "observacao_ica": {"type": "string"}
+                }
+              }
+            ],
+            "description": "null para códigos 1-2 ou visual"
+          },
+
+          "superficie_aproximacao_interna": {
+            "oneOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "required": ["largura_borda_interna_m", "distancia_cabeceira_m", "abertura_cada_lado_pct", "comprimento_m", "gradiente_pct"],
+                "properties": {
+                  "largura_borda_interna_m": {"type": "integer"},
+                  "distancia_cabeceira_m": {"type": "integer"},
+                  "abertura_cada_lado_pct": {"type": "string", "enum": ["Paralela"]},
+                  "comprimento_m": {"type": "integer"},
+                  "gradiente_pct": {"type": "number"},
+                  "observacao_ica": {"type": "string"}
+                }
+              }
+            ],
+            "description": "null exceto para precision CAT_II_III em códigos 3-4"
+          },
+
+          "superficie_transicao_interna": {
+            "oneOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "required": ["gradiente_pct"],
+                "properties": {
+                  "gradiente_pct": {"type": "number"},
+                  "observacao_ica": {"type": "string"}
+                }
+              }
+            ],
+            "description": "null exceto para precision CAT_II_III em códigos 3-4"
+          },
+
+          "superficie_pouso_interrompido": {
+            "oneOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "required": ["largura_borda_interna_m", "distancia_cabeceira_m", "abertura_cada_lado_pct", "gradiente_pct"],
+                "properties": {
+                  "largura_borda_interna_m": {"type": "integer"},
+                  "distancia_cabeceira_m": {
+                    "oneOf": [
+                      {"type": "integer"},
+                      {"type": "string", "enum": ["variavel", "1800"]}
+                    ]
+                  },
+                  "abertura_cada_lado_pct": {"type": "number"},
+                  "gradiente_pct": {"type": "number"},
+                  "observacao_ica": {"type": "string"}
+                }
+              }
+            ],
+            "description": "null exceto para precision CAT_II_III em códigos 3-4"
+          }
+        }
+      }
+    },
+
+    "notas_implementacao": {
+      "type": "object",
+      "properties": {
+        "compatibilidade": {
+          "type": "string",
+          "const": "100% compatível com Airport schema v1.0.3"
+        },
+        "lookup_method": {
+          "type": "string",
+          "const": "Busca por code_number + approach_type + cat_precision derivada de tecnologia_aproximacao"
+        },
+        "cat_precision_mapping": {
+          "type": "object",
+          "properties": {
+            "visual": {"type": "string", "const": "Sempre null"},
+            "non-precision": {"type": "string", "const": "Sempre null"},
+            "precision": {"type": "string", "const": "CAT_I ou CAT_II_III baseado em tecnologia_aproximacao"}
+          }
+        },
+        "tecnologia_aproximacao_examples": {
+          "type": "object",
+          "properties": {
+            "CAT_I": {"type": "array", "items": {"type": "string"}, "examples": [["ILS-CAT-I", "ILS", "LPV", "LNAV/VNAV"]]},
+            "CAT_II_III": {"type": "array", "items": {"type": "string"}, "examples": [["ILS-CAT-II", "ILS-CAT-III", "ILS-CAT-IIIA", "ILS-CAT-IIIB", "ILS-CAT-IIIC"]]}
+          }
+        }
+      }
+    }
+  }
+}

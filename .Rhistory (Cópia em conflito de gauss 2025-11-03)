@@ -1,0 +1,431 @@
+source("~/Dropbox/AirportPro/R/class_runway.R")
+library(R6)
+install.packages("R6")
+library(R6)
+source("~/Dropbox/AirportPro/R/class_runway.R")
+source("~/Dropbox/AirportPro/R/class_runway.R")
+end06 <- list(designator = "06",
+lat = -31.3951944444444,
+lon = -54.1177444444445)
+end24 <- list(designator = "24",
+lat = -31.3858333333333,
+lon = -54.1063527777778)
+rw <- Runway$new(end06, end24)
+rw
+# Acessar:
+rw$end_a
+rw$end_b
+# pacotes
+library(sf)
+library(dplyr)
+library(ggplot2)
+install.packages("sf")
+end06 <- list(designator = "06",
+lat = -31.3951944444444,
+lon = -54.1177444444445)
+end24 <- list(designator = "24",
+lat = -31.3858333333333,
+lon = -54.1063527777778)
+rw <- Runway$new(end06, end24)
+# Acessar:
+rw$end_a
+rw$end_b
+# pacotes
+library(sf)
+library(dplyr)
+library(ggplot2)
+install.packages("dplyr")
+install.packages("ggplot2")
+# pacotes
+library(sf)
+library(dplyr)
+library(ggplot2)
+# ---- 1) Coordenadas das cabeceiras (graus decimais, WGS84) ----
+end06 <- c(lon = -54.1177444444445, lat = -31.3951944444444)  # RWY 06
+end24 <- c(lon = -54.1063527777778, lat = -31.3858333333333)  # RWY 24
+# largura da pista (m) — ajuste conforme necessário
+runway_width <- 45
+# ---- 2) Monta objeto sf em WGS84 ----
+pts <- rbind(end06, end24) |>
+as.data.frame() |>
+st_as_sf(coords = c("lon", "lat"), crs = 4326)
+# ---- 3) Escolhe UTM automaticamente e projeta para metros ----
+# regra: zona = floor((lon+180)/6)+1; EPSG: 327xx (hemisfério sul) ou 326xx (norte)
+mean_lon <- st_coordinates(st_combine(pts))[,1] |> mean()
+mean_lat <- st_coordinates(st_combine(pts))[,2] |> mean()
+utm_zone <- floor((mean_lon + 180)/6) + 1
+epsg_utm <- if (mean_lat < 0) 32700 + utm_zone else 32600 + utm_zone
+pts_utm <- st_transform(pts, epsg_utm)
+A <- st_coordinates(pts_utm)[1, ]  # x1,y1
+B <- st_coordinates(pts_utm)[2, ]  # x2,y2
+# ---- 4) Calcula retângulo da pista em metros ----
+v <- B - A                           # vetor ao longo da pista
+L <- sqrt(sum(v^2))                  # comprimento (m), opcional
+u <- v / L                           # unitário ao longo
+p <- c(-u[2], u[1])                  # perpendicular unitário (90°)
+hw <- runway_width / 2               # meia largura
+# cantos (ordem para um polígono fechado)
+c1 <- A + p * hw
+c2 <- A - p * hw
+c3 <- B - p * hw
+c4 <- B + p * hw
+coords_rect <- rbind(c1, c2, c3, c4, c1)
+runway_poly <- st_sfc(st_polygon(list(coords_rect)), crs = epsg_utm) |>
+st_as_sf() |>
+mutate(width_m = runway_width, length_m = round(L, 1))
+# (opcional) centro da pista e linha central
+centerline <- st_sfc(st_linestring(rbind(A, B)), crs = epsg_utm) |> st_as_sf()
+# ---- 5) Plot simples no ggplot (em metros) ----
+ggplot() +
+geom_sf(data = runway_poly, fill = "grey80", color = "black") +
+geom_sf(data = centerline, linetype = "dashed") +
+ggtitle(paste0("Runway retângulo — largura ", runway_width, " m; comprimento ~ ", runway_poly$length_m, " m")) +
+coord_equal()
+# pacotes
+library(sf)
+library(dplyr)
+library(ggplot2)
+# ---- 1) Coordenadas das cabeceiras (graus decimais, WGS84) ----
+end06 <- c(lon = -54.1177444444445, lat = -31.3951944444444)  # RWY 06
+end24 <- c(lon = -54.1063527777778, lat = -31.3858333333333)  # RWY 24
+# largura da pista (m) — ajuste conforme necessário
+runway_width <- 45
+# ---- 2) Monta objeto sf em WGS84 ----
+pts <- rbind(end06, end24) |>
+as.data.frame() |>
+st_as_sf(coords = c("lon", "lat"), crs = 4326)
+# ---- 3) Escolhe UTM automaticamente e projeta para metros ----
+# regra: zona = floor((lon+180)/6)+1; EPSG: 327xx (hemisfério sul) ou 326xx (norte)
+mean_lon <- st_coordinates(st_combine(pts))[,1] |> mean()
+mean_lat <- st_coordinates(st_combine(pts))[,2] |> mean()
+utm_zone <- floor((mean_lon + 180)/6) + 1
+epsg_utm <- if (mean_lat < 0) 32700 + utm_zone else 32600 + utm_zone
+pts_utm <- st_transform(pts, epsg_utm)
+A <- st_coordinates(pts_utm)[1, ]  # x1,y1
+B <- st_coordinates(pts_utm)[2, ]  # x2,y2
+# ---- 4) Calcula retângulo da pista em metros ----
+v <- B - A                           # vetor ao longo da pista
+L <- sqrt(sum(v^2))                  # comprimento (m), opcional
+u <- v / L                           # unitário ao longo
+p <- c(-u[2], u[1])                  # perpendicular unitário (90°)
+hw <- runway_width / 2               # meia largura
+# cantos (ordem para um polígono fechado)
+c1 <- A + p * hw
+c2 <- A - p * hw
+c3 <- B - p * hw
+c4 <- B + p * hw
+coords_rect <- rbind(c1, c2, c3, c4, c1)
+runway_poly <- st_sfc(st_polygon(list(coords_rect)), crs = epsg_utm) |>
+st_as_sf() |>
+mutate(width_m = runway_width, length_m = round(L, 1))
+# (opcional) centro da pista e linha central
+centerline <- st_sfc(st_linestring(rbind(A, B)), crs = epsg_utm) |> st_as_sf()
+# ---- 5) Plot simples no ggplot (em metros) ----
+ggplot() +
+geom_sf(data = runway_poly, fill = "grey80", color = "black") +
+geom_sf(data = centerline, linetype = "dashed") +
+ggtitle(paste0("Runway retângulo — largura ", runway_width, " m; comprimento ~ ", runway_poly$length_m, " m")) +
+coord_equal()
+source("~/.active-rstudio-document")
+# ---- 5) Plot simples no ggplot (em metros) ----
+ggplot() +
+geom_sf(data = runway_poly, fill = "grey80", color = "black") +
+geom_sf(data = centerline, linetype = "dashed") +
+ggtitle(paste0("Runway retângulo — largura ", runway_width, " m; comprimento ~ ", runway_poly$length_m, " m")) +
+coord_equal()
+# ---- 5) Plot simples no ggplot (em metros) ----
+ggplot() +
+geom_sf(data = runway_poly, fill = "grey80", color = "black") +
+geom_sf(data = centerline, linetype = "dashed") +
+ggtitle(paste0(
+"Runway retângulo — largura ", runway_width,
+" m; comprimento ~ ", runway_poly$length_m, " m"
+)) +
+coord_sf()
+source("~/Dropbox/AirportPro/R/class_runway.R")
+# Cabeceiras
+end06 <- list(designator = "06",
+lat = -31.39519,
+lon = -54.11774)
+end24 <- list(designator = "24",
+lat = -31.38583,
+lon = -54.10635)
+# Instancia a pista com largura de 45 m
+rw <- Runway$new(end_a = end06, end_b = end24, width_m = 45)
+# Verificar
+rw$end_a
+rw$end_b
+rw$width_m
+source("~/Dropbox/AirportPro/R/class_runway.R")
+end24 <- list(designator = "24",
+lat = -31.38583,
+lon = -54.10635)
+# Instancia a pista com largura de 45 m
+rw <- Runway$new(end_a = end06, end_b = end24, width_m = 45)
+# Verificar
+rw$end_a
+rw$end_b
+rw$width_m
+# Cabeceiras
+end06 <- list(designator = "06",
+lat = -31.39519,
+lon = -54.11774)
+end24 <- list(designator = "24",
+lat = -31.38583,
+lon = -54.10635)
+# Criação da pista
+rw <- Runway$new(end_a = end06, end_b = end24, width_m = 45)
+# Visualização
+rw
+str(rw)
+library(sf)
+library(leaflet)
+# Util: pega lon/lat das cabeceiras do objeto R6
+.rw_coords <- function(rw) {
+stopifnot(!is.null(rw$end_a), !is.null(rw$end_b), !is.null(rw$width_m))
+end06 <- c(lon = rw$end_a$lon, lat = rw$end_a$lat)
+end24 <- c(lon = rw$end_b$lon, lat = rw$end_b$lat)
+list(end06 = end06, end24 = end24, width = rw$width_m)
+}
+# Constrói o POLYGON da pista (retângulo) a partir de rw
+runway_to_sf_polygon <- function(rw) {
+cc <- .rw_coords(rw)
+# pontos WGS84
+pts <- data.frame(lon = c(cc$end06["lon"], cc$end24["lon"]),
+lat = c(cc$end06["lat"], cc$end24["lat"])) |>
+st_as_sf(coords = c("lon", "lat"), crs = 4326)
+# UTM automático (sul: 327xx; norte: 326xx)
+mean_lon <- mean(st_coordinates(pts)[,1])
+mean_lat <- mean(st_coordinates(pts)[,2])
+utm_zone <- floor((mean_lon + 180)/6) + 1
+epsg_utm <- if (mean_lat < 0) 32700 + utm_zone else 32600 + utm_zone
+pts_utm <- st_transform(pts, epsg_utm)
+A <- st_coordinates(pts_utm)[1, ]
+B <- st_coordinates(pts_utm)[2, ]
+v  <- B - A
+L  <- sqrt(sum(v^2))
+u  <- v / L
+p  <- c(-u[2], u[1])
+hw <- cc$width / 2
+c1 <- A + p * hw; c2 <- A - p * hw; c3 <- B - p * hw; c4 <- B + p * hw
+poly_utm <- st_sfc(st_polygon(list(rbind(c1,c2,c3,c4,c1))), crs = epsg_utm)
+st_transform(poly_utm, 4326) |> st_as_sf() |>
+within({
+width_m  <- cc$width
+length_m <- L
+designators <- paste(rw$end_a$designator, rw$end_b$designator, sep = "/")
+})
+}
+# (Opcional) linha central para referência
+runway_to_sf_centerline <- function(rw) {
+cc <- .rw_coords(rw)
+st_sfc(st_linestring(rbind(
+c(cc$end06["lon"], cc$end06["lat"]),
+c(cc$end24["lon"], cc$end24["lat"])
+)), crs = 4326) |> st_as_sf()
+}
+# Plot no leaflet usando o objeto rw
+runway_leaflet <- function(rw) {
+poly <- runway_to_sf_polygon(rw)
+line <- runway_to_sf_centerline(rw)
+leaflet() |>
+addProviderTiles("OpenStreetMap") |>
+addPolygons(data = poly, fillColor = "gray70", color = "black",
+weight = 2,
+label = ~paste0("Runway ", designators,
+" | width=", round(width_m), " m",
+" | length≈", round(length_m,1), " m")) |>
+addPolylines(data = line, dashArray = "5,5") |>
+addCircleMarkers(lng = c(rw$end_a$lon, rw$end_b$lon),
+lat = c(rw$end_a$lat, rw$end_b$lat),
+label = c(rw$end_a$designator, rw$end_b$designator),
+radius = 5, color = "red") |>
+addScaleBar(position = "bottomleft") |>
+fitBounds(lng1 = min(poly |> st_coordinates()[,1]),
+lat1 = min(poly |> st_coordinates()[,2]),
+lng2 = max(poly |> st_coordinates()[,1]),
+lat2 = max(poly |> st_coordinates()[,2]))
+}
+# ---- usar diretamente com seu objeto rw ----
+library(sf)
+library(leaflet)
+# Util: pega lon/lat das cabeceiras do objeto R6
+.rw_coords <- function(rw) {
+stopifnot(!is.null(rw$end_a), !is.null(rw$end_b), !is.null(rw$width_m))
+end06 <- c(lon = rw$end_a$lon, lat = rw$end_a$lat)
+end24 <- c(lon = rw$end_b$lon, lat = rw$end_b$lat)
+list(end06 = end06, end24 = end24, width = rw$width_m)
+}
+# Constrói o POLYGON da pista (retângulo) a partir de rw
+runway_to_sf_polygon <- function(rw) {
+cc <- .rw_coords(rw)
+# pontos WGS84
+pts <- data.frame(lon = c(cc$end06["lon"], cc$end24["lon"]),
+lat = c(cc$end06["lat"], cc$end24["lat"])) |>
+st_as_sf(coords = c("lon", "lat"), crs = 4326)
+# UTM automático (sul: 327xx; norte: 326xx)
+mean_lon <- mean(st_coordinates(pts)[,1])
+mean_lat <- mean(st_coordinates(pts)[,2])
+utm_zone <- floor((mean_lon + 180)/6) + 1
+epsg_utm <- if (mean_lat < 0) 32700 + utm_zone else 32600 + utm_zone
+pts_utm <- st_transform(pts, epsg_utm)
+A <- st_coordinates(pts_utm)[1, ]
+B <- st_coordinates(pts_utm)[2, ]
+v  <- B - A
+L  <- sqrt(sum(v^2))
+u  <- v / L
+p  <- c(-u[2], u[1])
+hw <- cc$width / 2
+c1 <- A + p * hw; c2 <- A - p * hw; c3 <- B - p * hw; c4 <- B + p * hw
+poly_utm <- st_sfc(st_polygon(list(rbind(c1,c2,c3,c4,c1))), crs = epsg_utm)
+st_transform(poly_utm, 4326) |> st_as_sf() |>
+within({
+width_m  <- cc$width
+length_m <- L
+designators <- paste(rw$end_a$designator, rw$end_b$designator, sep = "/")
+})
+}
+# (Opcional) linha central para referência
+runway_to_sf_centerline <- function(rw) {
+cc <- .rw_coords(rw)
+st_sfc(st_linestring(rbind(
+c(cc$end06["lon"], cc$end06["lat"]),
+c(cc$end24["lon"], cc$end24["lat"])
+)), crs = 4326) |> st_as_sf()
+}
+runway_leaflet <- function(rw) {
+poly <- runway_to_sf_polygon(rw)
+line <- runway_to_sf_centerline(rw)
+# bbox sem pipe com `[`
+bb <- sf::st_bbox(poly)  # named vector: xmin, ymin, xmax, ymax
+leaflet() |>
+addProviderTiles("OpenStreetMap") |>
+addPolygons(data = poly, fillColor = "gray70", color = "black",
+weight = 2,
+label = ~paste0("Runway ", designators,
+" | width=", round(width_m), " m",
+" | length≈", round(length_m,1), " m")) |>
+addPolylines(data = line, dashArray = "5,5") |>
+addCircleMarkers(lng = c(rw$end_a$lon, rw$end_b$lon),
+lat = c(rw$end_a$lat, rw$end_b$lat),
+label = c(rw$end_a$designator, rw$end_b$designator),
+radius = 5, color = "red") |>
+addScaleBar(position = "bottomleft") |>
+fitBounds(lng1 = bb[["xmin"]], lat1 = bb[["ymin"]],
+lng2 = bb[["xmax"]], lat2 = bb[["ymax"]])
+}
+coords <- sf::st_coordinates(poly)
+fitBounds(lng1 = min(coords[,1]), lat1 = min(coords[,2]),
+lng2 = max(coords[,1]), lat2 = max(coords[,2]))
+source("~/Dropbox/AirportPro/R/class_runway.R")
+# Cabeceiras
+end06 <- list(designator = "06",
+lat = -31.39519,
+lon = -54.11774)
+end24 <- list(designator = "24",
+lat = -31.38583,
+lon = -54.10635)
+# Criação da pista
+rw <- Runway$new(end_a = end06, end_b = end24, width_m = 45)
+# Visualização
+rw
+source("~/Dropbox/AirportPro/R/class_runway.R")
+end06 <- list(designator = "06", lat = -31.39519, lon = -54.11774)
+end24 <- list(designator = "24", lat = -31.38583, lon = -54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw  # mostra
+rw$width_m       # lê
+rw$width_m <- 60 # muda com validação
+rw$width_m <- -10  # erro
+source("~/Dropbox/AirportPro/R/class_runway.R")
+end06 <- list(designator = "06", lat = -31.39519, lon = -54.11774)
+end24 <- list(designator = "24", lat = -31.38583, lon = -54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw  # mostra comprimento calculado
+rw$length_m       # lê (calcula)
+rw$length_m <- 5000  # erro: somente leitura
+rw$width_m <- 60     # pode mudar normalmente
+rw$length_m       # lê (calcula)
+end06 <- list(designator = "06", lat = -31.39519, lon = -54.11774)
+end24 <- list(designator = "24", lat = -31.38583, lon = -54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw  # mostra comprimento calculado
+rw$length_m       # lê (calcula)
+rw$length_m <- 5000  # erro: somente leitura
+rw$width_m <- 60     # pode mudar normalmente
+rw$length_m       # lê (calcula)
+rm(list = ls())
+# Executar linha por linha no editor:
+devtools::load_all()   # rode uma vez por sessão
+end06 <- list(designator="06", lat=-31.39519, lon=-54.11774)
+end24 <- list(designator="24", lat=-31.38583, lon=-54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw$to_sf_polygon()
+rw$plot_gg()
+rm(list = ls())
+# Executar linha por linha no editor:
+devtools::document()  # gera NAMESPACE com importFrom(magrittr,"%>%")
+source("~/Dropbox/AirportPro/scripts/dev_test.R")
+devtools::load_all()
+end06 <- list(designator="06", lat=-31.39519, lon=-54.11774)
+end24 <- list(designator="24", lat=-31.38583, lon=-54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw$to_sf_polygon()
+rw$plot_gg()
+rm(list = ls())
+# Executar linha por linha no editor:
+devtools::document()  # gera NAMESPACE com importFrom(magrittr,"%>%")
+rm(list = ls())
+# Executar linha por linha no editor:
+devtools::document()  # gera NAMESPACE com importFrom(magrittr,"%>%")
+devtools::load_all()
+end06 <- list(designator="06", lat=-31.39519, lon=-54.11774)
+end24 <- list(designator="24", lat=-31.38583, lon=-54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw$to_sf_polygon()
+rw$plot_gg()
+devtools::document()
+devtools::load_all()
+rm(list = ls())
+# Executar linha por linha no editor:
+devtools::document()  # gera NAMESPACE com importFrom(magrittr,"%>%")
+devtools::load_all()
+end06 <- list(designator="06", lat=-31.39519, lon=-54.11774)
+end24 <- list(designator="24", lat=-31.38583, lon=-54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw$to_sf_polygon()
+rw$plot_gg()
+roxygen2::roxygenise()
+rm(list = ls())
+# Executar linha por linha no editor:
+devtools::document()  # gera NAMESPACE com importFrom(magrittr,"%>%")
+devtools::load_all()
+end06 <- list(designator="06", lat=-31.39519, lon=-54.11774)
+end24 <- list(designator="24", lat=-31.38583, lon=-54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw$to_sf_polygon()
+rw$plot_gg()
+roxygen2::roxygenise()
+end06 <- list(designator="06", lat=-31.39519, lon=-54.11774)
+end24 <- list(designator="24", lat=-31.38583, lon=-54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw$to_sf_polygon()
+rw$plot_gg()
+rm(list = ls())
+# Executar linha por linha no editor:
+devtools::document()  # gera NAMESPACE com importFrom(magrittr,"%>%")
+devtools::load_all()
+end06 <- list(designator="06", lat=-31.39519, lon=-54.11774)
+end24 <- list(designator="24", lat=-31.38583, lon=-54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw$to_sf_polygon()
+rw$plot_gg()
+rm(list = ls())
+# Executar linha por linha no editor:
+devtools::document()  # gera NAMESPACE com importFrom(magrittr,"%>%")
+devtools::load_all()
+end06 <- list(designator="06", lat=-31.39519, lon=-54.11774)
+end24 <- list(designator="24", lat=-31.38583, lon=-54.10635)
+rw <- Runway$new(end06, end24, 45)
+rw$to_sf_polygon()
+rw$plot_gg()

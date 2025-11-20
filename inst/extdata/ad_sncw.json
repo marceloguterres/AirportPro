@@ -1,0 +1,53 @@
+{
+  "versao_estrutura": "1.0.3",
+  "referencia_norma": {
+    "norma_id": "RBAC-154",
+    "edicao": "2019-12-11"
+  },
+  "aeroporto": {
+    "icao": "SNCW",
+    "iata": null,
+    "nome": "Centro de Lançamento de Alcântara",
+    "municipio": "Alcântara",
+    "estado": "MA",
+    "geodesia": {
+      "latitude_arp": -2.3720,
+      "longitude_arp": -44.3906,
+      "elevacao_arp_m": 45.0,
+      "crs_planar": "EPSG:31983",
+      "geoid": "SIRGAS2000",
+      "datum_horizontal": "SIRGAS2000"
+    },
+    "pistas": [
+      {
+        "identificacao": "09/27",
+        "comprimento_m": 2600,
+        "largura_m": 45,
+        "tipo_pavimento": "ASFALTO",
+        "approach_type": "non-precision",
+        "codigo_referencia": {
+          "numero": 3,
+          "letra": "C"
+        },
+        "cabeceiras": [
+          {
+            "designador": "09",
+            "latitude_thr": -2.37648486,
+            "longitude_thr": -44.40760611,
+            "elevacao_thr_m": 43.93,
+            "rumo_verdadeiro_graus": 90.0,
+            "tecnologia_aproximacao": "VOR/DME"
+          },
+          {
+            "designador": "27",
+            "latitude_thr": -2.36950494,
+            "longitude_thr": -44.38527055,
+            "elevacao_thr_m": 43.17,
+            "rumo_verdadeiro_graus": 270.0,
+            "tecnologia_aproximacao": "VOR/DME"
+          }
+        ]
+      }
+    ]
+  }
+}

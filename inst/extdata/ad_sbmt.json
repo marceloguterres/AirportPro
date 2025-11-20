@@ -1,0 +1,53 @@
+{
+  "versao_estrutura": "1.0.3",
+  "referencia_norma": {
+    "norma_id": "RBAC-154",
+    "edicao": "2019-12-11"
+  },
+  "aeroporto": {
+    "icao": "SBMT",
+    "iata": "",
+    "nome": "Aeroporto Campo de Marte",
+    "municipio": "São Paulo",
+    "estado": "SP",
+    "geodesia": {
+      "latitude_arp": -23.509167,
+      "longitude_arp": -46.6375,
+      "elevacao_arp_m": 723.0,
+      "crs_planar": "EPSG:31983",
+      "geoid": "SIRGAS2000",
+      "datum_horizontal": "SIRGAS2000"
+    },
+    "pistas": [
+      {
+        "identificacao": "12/30",
+        "comprimento_m": 1600,
+        "largura_m": 45,
+        "tipo_pavimento": "ASPH",
+        "approach_type": "visual",
+        "codigo_referencia": {
+          "numero": 3,
+          "letra": "C"
+        },
+        "cabeceiras": [
+          {
+            "designador": "12",
+            "latitude_thr": -23.508333333333333,
+            "longitude_thr": -46.6425,
+            "elevacao_thr_m": 723.0,
+            "rumo_verdadeiro_graus": 120.0,
+            "tecnologia_aproximacao": ""
+          },
+          {
+            "designador": "30",
+            "latitude_thr": -23.510277777777777,
+            "longitude_thr": -46.63138888888889,
+            "elevacao_thr_m": 723.0,
+            "rumo_verdadeiro_graus": 300.0,
+            "tecnologia_aproximacao": "APAPI"
+          }
+        ]
+      }
+    ]
+  }
+}
