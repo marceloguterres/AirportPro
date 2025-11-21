@@ -3,6 +3,7 @@ rm(list = ls())
 devtools::document()
 devtools::load_all()
 
+library(ggplot2)
 # Objeto da classe Airport com dados processados
 sbpa <- Airport$new("inst/extdata/ad_sbpa.json")
 sbpa
@@ -50,7 +51,7 @@ sbpa$faixas
 faixa_11_29 <- runway_strip_to_sf(sbpa, "11/29", crs_final = 4326)
 
 # Plot bonito
-ggplot() +
+p<- ggplot() +
   geom_sf(data = faixa_11_29, fill = "#a8d8ea", color = "#0066cc", size = 1.2) +
   geom_sf_label(data = faixa_11_29, aes(label = pista_id), nudge_y = 0.001) +
   theme_void() +
@@ -60,4 +61,4 @@ ggplot() +
 
 
 
-
+p
