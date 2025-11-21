@@ -53,23 +53,9 @@ Airport <- R6::R6Class("Airport",
                              elev_m = as.numeric(geo$elevacao_arp_m)
                            )
 
-                           self$pistas      <- .process_runways(aero$pistas)
-                           self$faixas      <- .get_strip_params(self)
-                           self$superficies <- .get_superficie_params(self)
-                         },
-
-                         #' @description Lista todas as cabeceiras com suas superfícies ICA 11-408
-                         list_superficies = function() { list_superficies(self)
-                         },
-
-                         #' @description
-                         #' Retorna os parâmetros completos de uma cabeceira
-                         #' @param id ID completo (ex: "11_11") ou pista_id + designador
-                         #' @param pista_id ID da pista (ex: "11/29")
-                         #' @param designador Cabeceira (ex: "11")
-                         #' @return Lista com todos os parâmetros ICA 11-408
-                         get_superficie = function(id = NULL, pista_id = NULL, designador = NULL) {
-                           get_superficie(self, id, pista_id, designador)
-                         }
-                       )
+                         self$pistas      <- .process_runways(aero$pistas)
+                         self$faixas      <- .get_strip_params(self)
+                         self$superficies <- .get_superficie_params(self)
+                        }
+                      )
 )

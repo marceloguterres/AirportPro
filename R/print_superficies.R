@@ -65,6 +65,6 @@ print.superficies <- function(apt) {
   }
 
   cat("TODAS AS SUPERFÍCIES CALCULADAS COM SUCESSO!\n")
-  cat("Use apt$get_superficie(\"11/29_11\") para dados brutos.\n")
+  cat("Use get_superficie(apt, \"11/29_11\") para dados brutos.\n")
   invisible(apt)
 }
