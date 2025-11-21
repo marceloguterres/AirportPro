@@ -3,7 +3,7 @@ rm(list = ls())
 devtools::document()
 devtools::load_all()
 
-# ↑ Objeto da classe Airport com dados processados
+# Objeto da classe Airport com dados processados
 sbpa <- Airport$new("inst/extdata/ad_sbpa.json")
 sbpa
 sbpa$arp$lat

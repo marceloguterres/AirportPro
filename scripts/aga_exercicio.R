@@ -4,7 +4,8 @@ devtools::document()
 devtools::load_all()
 
 
-cat("🚀 Carregando Centro de Lançamento de Alcântara (SNCW)\n")
+cat("🚀 Carregando Centro de Lançamento de Alcântara")
+cat(" (SNCW)\n")
 sncw <- Airport$new("inst/extdata/ad_sncw.json")
 print(sncw)
 cat("\n📐 Criando geometrias da pista 09/27...\n")
